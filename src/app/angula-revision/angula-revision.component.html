@@ -1,0 +1,89 @@
+<!-- <h2>Angula-revision</h2> -->
+
+<!-- interpolation binding -->
+<!-- <h3>Name:{{name}}</h3><br> -->
+
+<!-- property binding -->
+<!-- <a [href]=link>visit our site</a><br><br> -->
+
+<!-- event buinding -->
+<!-- <button (click)="onClick()">Submit</button><br><br> -->
+
+<!-- two way binding -->
+<!-- <input type="text" [(ngModel)]="text"> -->
+<!-- {{text}} -->
+
+
+<!-- directives -->
+<!-- structural directives -->
+
+<!-- *ngIf -->
+<!-- <h2 *ngIf="showText">Hello this is ngIf</h2> -->
+
+<!-- *ngFor -->
+<!-- <select [(ngModel)]="selectCountry"> -->
+    <!-- <option *ngFor="let cnt of country">{{cnt}}</option> -->
+<!-- </select> -->
+
+
+
+<!-- <form name="myForm" #frm="ngForm" (ngSubmit)="onSubmitData(frm)">
+   <div class="form-group">
+    <label for="firstname">firstname</label>
+    <input type="text" name="uname" class="form-control" class="form-control" #uname="ngModel" ngModel 
+    required [ngClass]="{'is-invalid':frm.submitted && uname.invalid}">
+
+    <div *ngIf="frm.submitted && uname.invalid" class="invalid-feedback">user name is required </div>
+   </div>
+
+   <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" class="form-control" #email="ngModel" ngModel
+    required [ngClass]="{'is-invalid':frm.submitted && email.invalid}" 
+    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+    <div *ngIf="email.touched" class="invalid-feedback">
+        <div *ngIf="email.errors?.['required']">Email is required</div>
+        <div *ngIf="email.errors?.['pattern']">invalid email,please enter valid email</div>
+    </div>
+   </div>
+
+   <div  class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="pass" class="form-control" #pass="ngModel" ngModel>
+   </div>
+
+   <div  class="form-group">
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    <button type="button">Update</button>
+   </div>
+
+</form> -->
+
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmitData(myForm)">
+      <div>
+        username
+        <input type="text" name="uname" formControlName="username"
+        required [ngClass]="{'is-invalid':isSubmitted && myForm.controls.username.errors}">
+      </div>
+
+      <div>
+        email:
+        <input type="email" name="email" formControlName="email">
+      </div>
+
+      <div>
+        password:
+        <input type="password" name="pass" formControlName="pass">
+      </div>
+
+      <div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <button type="button">Update</button>
+      </div>
+
+
+</form>

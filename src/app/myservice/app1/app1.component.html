@@ -1,0 +1,24 @@
+
+
+<button (click)="getApiData()">data</button>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+    </tr>
+    <tr *ngFor="let dt of userData">
+        <td>{{dt.id}}</td>
+        <td>{{dt.first_name}}</td>
+        <td>{{dt.last_name}}</td>
+        <td><img src="{{dt.avatar}}"></td>
+        <td>
+            <button class="btn btn-danger" (click)="delUserdata(dt.id)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+
+

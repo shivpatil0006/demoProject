@@ -1,0 +1,16 @@
+<h1>Data Binding 2</h1>
+
+<!-- 1.interpolation binding -->
+<p>Your name is: {{name}}</p>
+
+<!-- 2. property binding or attribute binding -->
+
+<a [href]="link">go to your link</a><br>
+
+<!-- 3.event binding -->
+
+<button class="btn btn-primary" (click) = "onClick()">Submit</button><br>
+
+<!-- Two way Binding -->
+<input type="text" name="fn" [(ngModel)]="fname"><br>
+<h3>Your Name is:{{fname}}</h3>

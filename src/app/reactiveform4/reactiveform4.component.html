@@ -1,0 +1,90 @@
+<h2>Reactive Form 4 works!</h2>
+
+<h1>
+    Reactive Form CRUD
+</h1>
+<div class="container">
+    <div class="row">
+
+        <div class="col-4" class="bg-img">
+
+        </div>
+        <div class="col-8">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmitData(myForm)">
+
+                <div>
+                    <input type="hidden" name="id" id="" formControlName="id">
+                </div>
+
+
+
+                <div class="form-group mb-3">
+                    <label>First Name: </label>
+                    <input type="text" name="fname" formControlName="fname" class="form-control">
+
+                </div>
+
+
+
+
+                <div class="form-group mb-3">
+
+                    <label>Email: </label>
+                    <input type="email" name="email" formControlName="email" class="form-control">
+
+                </div>
+
+                <div class="form-group mb-3 mt-5">
+                    <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" class=" radio" value="male" formControlName="gender">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" class=" radio" value="female" formControlName="gender">
+                    <label for="female">Female</label>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info">Submit</button>
+
+                    <button type="reset" class="btn btn-danger" style="margin-left: 20px;"> Reset</button>
+
+                    <button type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="UpdateData(myForm)"> Update</button>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="container" *ngIf="ShowTable">
+    <table class="table table-primary">
+        <tr>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Action</th>
+            <th>Action</th>
+
+
+        </tr>
+
+        <tr *ngFor="let dt of allFormData">
+            <td> {{dt.fname}} </td>
+            <td> {{dt.email}}</td>
+            <td> {{dt.gender}} </td>
+
+            <td>
+                <button type="button" (click)="DeleteRow(dt)"> Delet</button>
+            </td>
+            <td>
+                <button type="button" (click)="SideUpdate(dt)"> Update</button>
+            </td>
+
+        </tr>
+    </table>
+</div>

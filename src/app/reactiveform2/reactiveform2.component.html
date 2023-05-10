@@ -1,0 +1,74 @@
+<h2>Reactiveform</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmitData()">
+
+    <div>
+        <input type="hidden" name="id" formControlName="id" [(ngModel)]="idd">
+    </div>
+
+    <div class="form-group">
+        <label for="username">User Name</label>
+        <input type="text" name="uname" class="form-control" formControlName="uname" 
+        [ngClass]="{'is-invalid':Submitted && myForm.controls.uname.errors}" required
+        [(ngModel)]="unm">
+
+        <div *ngIf="Submitted && myForm.controls.uname.errors?.required" class="invalid-feedback"> 
+            Username is required
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control" formControlName="email" 
+        [ngClass]="{'is-invalid':Submitted && myForm.controls.email.errors}" required
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="eml">
+
+        <div *ngIf="Submitted && myForm.controls.email.errors?.required" class="invalid-feedback">
+            Email is required
+        </div>
+
+        <div *ngIf="Submitted && myForm.controls.email.errors?.pattern" class="invalid-feedback">
+            Email is invalid, please enter valid email
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pass">Password</label>
+        <input type="pass" name="pass" class="form-control" formControlName="pass" 
+        [ngClass]="{'is-invalid':Submitted && myForm.controls.pass.errors}" required
+        [(ngModel)]="ps">
+
+        <div *ngIf="Submitted && myForm.controls.pass.errors?.required" class="invalid-feedback">
+            Password is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+
+<table *ngIf="showTable" class="table table-primary">
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let data of allData">
+        <td>{{data.uname}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.pass}}</td>
+        <td>
+            <button class="btn btn-danger" (click)="onDelete(data)">Delete</button>
+        </td>
+        <td>
+            <button class="btn btn-info" (click)="onUpdate(data)">Update</button>
+        </td>
+    </tr>
+
+</table>

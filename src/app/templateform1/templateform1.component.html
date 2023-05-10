@@ -1,0 +1,86 @@
+<h2>Template Form 1 </h2>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Fill the form </h3>
+            <form name="myForm" #frm="ngForm" (ngSubmit)="frm.form.valid && onSubmitData(frm)">
+
+                <div>
+                    <input type="hidden" name="id" class="form-control" #id="ngModel" ngModel
+                    [(ngModel)]="idd">
+                </div>
+
+
+                <div class="form-group"> 
+                    <label for="firstname">First Name:</label><span style="color:red">*</span>
+                    <input type="text" name="fname" class="form-control" #fname="ngModel" ngModel
+                    required [ngClass]="{'is-invalid':frm.submitted && fname.invalid}" [(ngModel)]="fn">
+
+                    <div *ngIf="frm.submitted && fname.invalid" class="invalid-feedback">First name is required</div>
+                </div>
+            
+                <div class="form-group"> 
+                    <label for="lasttname">Last Name:</label><span style="color:red">*</span>
+                    <input type="text" name="lname" class="form-control" #lname="ngModel" ngModel
+                    required [ngClass]="{'is-invalid':frm.submitted && lname.invalid}" [(ngModel)]="ln">
+
+                    <div *ngIf="frm.submitted && lname.invalid" class="invalid-feedback">Last name is required</div>
+                </div>
+            
+                <div class="form-group"> 
+                    <label for="Email">Email:</label><span style="color:red">*</span>
+                    <input type="email" name="email" class="form-control" #email="ngModel" ngModel
+                    required [ngClass]="{'is-invalid':frm.submitted && email.invalid}"
+                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  [(ngModel)]="eml">
+
+                    <div *ngIf="email.touched" class="invalid-feedback">
+                        <div *ngIf="email.errors?.['required']">Email is required</div>
+                        <div *ngIf="email.errors?.['pattern']">Email is not valid, Please enter valid email</div>
+                    </div>
+                </div>
+            
+                <div class="form-group"> 
+                    <label for="password">Password:</label><span style="color:red">*</span>
+                    <input type="password" name="pass" class="form-control" #pass="ngModel" ngModel 
+                    required [ngClass]="{'is-invalid':frm.submitted && pass.invalid}"minlength="8">
+
+                    <div *ngIf="pass.touched" class="invalid-feedback">
+                        <div *ngIf="pass.errors?.['required']">Password is required</div>
+                        <div *ngIf="pass.errors?.['minlength']">Minimun 8 character required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                   <button class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+            <table *ngIf="showTable" class="table talbe-primary">
+                <tr >
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+
+                <tr *ngFor="let dt of alldata">
+                    <td>{{dt.fname}}</td>
+                    <td>{{dt.lname}}</td>
+                    <td>{{dt.email}}</td>
+                    <td ><button class="btn btn-danger" (click)="onDelete(dt)">Delete</button>  </td>
+                    <td ><button class="btn btn-primary" (click)="onUpdate(dt)">Edit</button> </td>  
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+

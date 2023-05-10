@@ -1,0 +1,39 @@
+<p>my-crud works!</p>
+
+
+
+<form name="form" #frm="ngForm" (ngSubmit)="onSubmitData(frm)">
+
+    <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input type="text" name="firstName" #firstName="ngModel" ngModel class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="lastname">Last Name:</label>
+        <input type="text" name="lastName" #lastName="ngModel" ngModel class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" #email="ngModel" ngModel class="form-control">
+    </div>&nbsp;
+
+    <div class="form-group">
+        <label for="gender">Gender:</label>&nbsp;&nbsp;
+        <input type="radio" name="gender" #gender="ngModel" value="male" ngModel>&nbsp;
+        <label for="male">Male</label>&nbsp;&nbsp;
+        <input type="radio" name="gender" #gender="ngModel" value="female" ngModel >&nbsp;
+        <label for="male">Female</label>
+    </div>&nbsp;
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" #password="ngModel" ngModel class="form-control">
+    </div>&nbsp;
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+</form>

@@ -1,0 +1,50 @@
+<p>app3 works!</p>
+
+<form name="myForm"  #frm="ngForm" (ngSubmit)="onSubmitData(frm)">
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" #name="ngModel" ngModel class="form-control" >
+    </div>
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" #username="ngModel" ngModel class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" #email="ngModel" ngModel class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="address" name="address" #address="ngModel" ngModel class="form-control">
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </div>
+</form>
+
+
+<button class="btn btn-primary" (click)="getSerData()">Data</button>
+<table class="table table-primary">
+    <tr>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let dt of serData">
+        <td>{{dt.name}}</td>
+        <td>{{dt.username}}</td>
+        <td>{{dt.email}}</td>
+        <td>{{dt.address.city}}</td>
+        <td>
+            <button class="btn btn-danger" (click)="deleteSerData(dt.id)">Delete</button>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,38 @@
+<h2>Angular Directives</h2>
+
+
+<h3>1.structural attributes</h3>
+<!--1. *ngIf -->
+<p *ngIf="showFlag && (age > 18)">{{text}}</p><br><br>
+
+<!-- 2.*ngFor -->
+<select class="form-control" [(ngModel)]="selectCountry">
+    <option *ngFor="let ct of country">{{ct}}</option>
+</select>
+
+<!-- 3.*ngSwitch -->
+
+
+
+<h3>Attributes Directive</h3>
+
+<!-- ngClass -->
+<p class="testClass">This is p tag with normal class</p>
+
+<p [ngClass]="testClass1">This is p tag with ngClass</p>
+
+<p [ngClass]="(showFlag && age>18) ? 'test1':'test2'">This is p tag with ng class and ternory operator</p>
+
+
+
+
+<!-- ngStyle -->
+<p style="color:red">This is p tag with nornal style</p>
+
+<p [ngStyle]="{'color':'green'}">This is P tag with ng style</p>
+
+<p [ngStyle]="testStyle1">This is p tag with ng style</p>
+
+<p [ngStyle]="showFlag ? testStyle2:testStyle3">Ihis is p tag with ngStyle style and ternory operator </p>
+
+

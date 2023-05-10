@@ -1,0 +1,21 @@
+<h2>Service</h2>
+
+<button (click)="pl1Data()">player1</button>{{player1Data}}
+<button (click)="pl2Data()">player2</button>{{player2Data}}
+<button (click)="pl3Data()">player3</button>{{player3Data}}
+
+<button (click)="allUserData()">Userdata</button>
+<table>
+    <tr *ngFor="let dt of userData">
+        <td>{{dt.name}}</td>
+        <td>{{dt.username}}</td>
+        <td>{{dt.email}}</td>
+        <td>{{dt.address.city}}</td>
+    </tr>
+</table>
+
+
+
+
+
+
